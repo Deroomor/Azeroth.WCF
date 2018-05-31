@@ -3,6 +3,7 @@
 
 * 基于wcf类库实现标准的webservice
   * 服务端
+    * 元数据 `System.ServiceModel.Description.MetadataExchangeBindings.CreateMexHttpBinding`,`System.ServiceModel.Description.MetadataExchangeBindings.CreateMexTcpBinding`
   * 客户端
 
 * 基于wcf类库实现webapi
