@@ -11,5 +11,8 @@ namespace Klz.API
         public int Age { get; set; }
         public string Name { get; set; }
         public Guid Id { get; set; }
+        public List<int> Number { set; get; }
+
+        public UserInfo Parent { set; get; }
     }
 }
