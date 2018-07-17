@@ -45,14 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API.cs" />
     <Compile Include="CrossDomainEnable.cs" />
-    <Compile Include="ErrorHook.cs" />
+    <Compile Include="StormServiceBehavior.cs" />
     <Compile Include="ICrossDomainEnable.cs" />
     <Compile Include="ErrorHandler.cs" />
     <Compile Include="IUserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\UserInfo.cs" />
     <Compile Include="UserInfo.cs" />
-    <Compile Include="UserInfoAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

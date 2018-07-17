@@ -28,13 +28,13 @@ namespace Klz.API
             //添加格式化程序故障。
             msg.Properties.Add(WebBodyFormatMessageProperty.Name, wbf);
 
-            ////修改响应
+            //修改响应
             //HttpResponseMessageProperty rmp = new HttpResponseMessageProperty();
 
-            //// 返回自定义错误码, 500.
-            //rmp.StatusCode = System.Net.HttpStatusCode.OK;
+            // 返回自定义错误码, 500.
+            //rmp.StatusCode = System.Net.HttpStatusCode.InternalServerError;
 
-            ////rmp.StatusDescription = "Bad request";
+            //rmp.StatusDescription = "Bad request";
 
             ////Headers写入jsonerror和JSON内容（ Content-Type 标头，指定伴随正文数据的 MIME 类型。）
             //rmp.Headers[System.Net.HttpResponseHeader.ContentType] = "application/json";

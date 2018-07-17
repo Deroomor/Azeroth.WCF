@@ -5,14 +5,21 @@ using System.Text;
 
 namespace Klz.API
 {
-
-    public class UserInfo
+    [StormServiceBehavior]
+    public class UserInfo:CrossDomainEnable,IUserInfo
     {
-        public int Age { get; set; }
-        public string Name { get; set; }
-        public Guid Id { get; set; }
-        public List<int> Number { set; get; }
+        public Model.UserInfo Add(Model.UserInfo model)
+        {
+            model.Id = Guid.NewGuid();
+            return model;
+        }
 
-        public UserInfo Parent { set; get; }
+
+        public List<Model.UserInfo> GetList(Model.UserInfo predicate)
+        {
+            predicate.Id = Guid.NewGuid();
+            List<Model.UserInfo> lst = new List<Model.UserInfo>() { predicate, predicate, predicate };
+            return lst;
+        }
     }
 }

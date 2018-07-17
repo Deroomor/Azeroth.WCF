@@ -6,15 +6,15 @@ using System.Text;
 namespace Klz.API
 {
     [System.ServiceModel.ServiceContract]
-    public interface IUserInfoAPI:ICrossDomainEnable
+    public interface IUserInfo:ICrossDomainEnable
     {
        
         [System.ServiceModel.OperationContract]
         [System.ComponentModel.Description("新增员工信息")]
-        UserInfo Add(UserInfo model);
+        Model.UserInfo Add(Model.UserInfo model);
 
         [System.ServiceModel.OperationContract]
         [System.ComponentModel.Description("获取所有员工信息")]
-        List<UserInfo> GetList(UserInfo predicate);
+        List<Model.UserInfo> GetList(Model.UserInfo predicate);
     }
 }

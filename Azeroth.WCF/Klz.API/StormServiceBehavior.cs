@@ -10,29 +10,36 @@ using System.Text;
 
 namespace Klz.API
 {
- public    class ErrorHookAttribute : System.Attribute, System.ServiceModel.Description.IServiceBehavior
+ public    class StormServiceBehavior : System.Attribute, System.ServiceModel.Description.IServiceBehavior
     {
-        public Type ErrorHandlerMeta { set; get; }
 
-        
 
+        ErrorHandler errorHandler = new ErrorHandler();
+
+        /// <summary>
+        /// 可以处理各个终结点
+        /// </summary>
+        /// <param name="serviceDescription"></param>
+        /// <param name="serviceHostBase"></param>
+        /// <param name="endpoints"></param>
+        /// <param name="bindingParameters"></param>
         public void AddBindingParameters(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase, Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
         {
             
         }
 
+        /// <summary>
+        /// 处理一个服务
+        /// </summary>
+        /// <param name="serviceDescription"></param>
+        /// <param name="serviceHostBase"></param>
         public void ApplyDispatchBehavior(ServiceDescription serviceDescription, ServiceHostBase serviceHostBase)
         {
-            if (ErrorHandlerMeta == null)
-                return;
-            var handler= System.Activator.CreateInstance(ErrorHandlerMeta) as IErrorHandler;
-            if (handler == null)
-                return;
             foreach (ChannelDispatcherBase dispatcherBase in serviceHostBase.ChannelDispatchers)
             {
                 var channelDispatcher = dispatcherBase as ChannelDispatcher;
                 if (channelDispatcher != null )
-                    channelDispatcher.ErrorHandlers.Add(handler);
+                    channelDispatcher.ErrorHandlers.Add(errorHandler);
             }
         }
 
