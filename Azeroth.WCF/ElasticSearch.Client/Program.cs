@@ -5,10 +5,99 @@ using System.Text;
 
 namespace ElasticSearch.Client
 {
+    public class ZlInfomation
+    {
+
+        public int Print()
+        {
+            Console.WriteLine("hellow owr");
+
+            return 3;
+        }
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public String title { get; set; }
+
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public Guid id { get; set; }
+
+        /// <summary>
+        /// 专题名称
+        /// </summary>
+        public string[] topicname { get; set; }
+
+        /// <summary>
+        /// 简介
+        /// </summary>
+        public string subject { get; set; }
+
+        /// <summary>
+        /// 封面图片
+        /// </summary>
+        public string coverurl { get; set; }
+
+        /// <summary>
+        /// 正文
+        /// </summary>
+        public string content { get; set; }
+
+        /// <summary>
+        /// 标签
+        /// </summary>
+        public string[] tags { get; set; }
+
+        /// <summary>
+        /// 文档类别
+        /// </summary>
+        public Documents docType { get; set; }
+
+        public DateTime datetime { get; set; }
+
+    }
+
+    public enum Documents
+    {
+        资讯 = 0x1,
+        视频 = 0x2,
+        专家洞见 = 0x4,
+        问题 = 0x5,
+    }
     class Program
     {
         static void Main(string[] args)
         {
+            int[] iaa = null;
+            var iaaa4= iaa?[7];
+
+
+            string[] a1 = null;
+
+            
+
+            var aa1= string.Join(";","a",null,"b");
+
+            var zl= new ZlInfomation() {  docType= Documents.视频, datetime=DateTime.Now, id=Guid.NewGuid()};
+            var ddd= default(Guid);
+            var m222= zl?.Print();
+            zl = null;
+            var m2223 = zl?.Print();
+
+            var patarmeter= Newtonsoft.Json.JsonConvert.SerializeObject(zl, new Newtonsoft.Json.JsonSerializerSettings() {  DateFormatString="yyyy-MM-dd HH:mm:ss"});
+
+            int ba = 0;
+            if (System.Threading.Interlocked.Exchange(ref ba, 1) == 1)
+                Console.Write("正在重建索引");
+            else
+                Console.Write("开始重建索引");
+
+            if (System.Threading.Interlocked.Exchange(ref ba, 1) == 1)
+                Console.Write("正在重建索引");
+            else
+                Console.Write("开始重建索引");
+
             ElasticSearchConfig config = new ElasticSearchConfig("http://111.230.87.237:9200/", "articleindex");
             ElasticSearchConfig config2 = new ElasticSearchConfig("http://111.230.87.237:9200/", "htttags");
             var mappings = new {
