@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Klz.Cert.HomeHandler" CodeBehind="HomeHandler.svc.cs" %>
